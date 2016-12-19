@@ -17,8 +17,5 @@
     "message"
   ],
   "author": "Fangdun Cai <cfddream@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "vue-style-loader": "^1.0.0"
-  }
+  "license": "MIT"
 }
