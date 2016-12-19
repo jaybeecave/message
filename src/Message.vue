@@ -17,7 +17,13 @@
           </span>
           {{ title }}
         </div>
-        <div class="message-body" v-if="message">{{ message }}</div>
+        <div class="message-body" v-if="message">
+          {{ message }}
+          <div class="confirmation-buttons is-grouped" v-if="showConfirmationButtons">
+            <button :class="['button', 'is-confirm', type ? `is-${type}` : '']" @click="onConfirmCallback()">Ok</button>
+            <button class="button is-cancel" @click="close()">Cancel</button>
+          </div>
+        </div>
       </article>
     </div>
   </transition>
@@ -44,7 +50,17 @@ export default {
       type: String,
       default: '.messages'
     },
-    showCloseButton: Boolean
+    showCloseButton: Boolean,
+    showConfirmationButtons: Boolean,
+    confirmButtonText: {
+      type: String,
+      default: 'Ok'
+    },
+    cancelButtonText: {
+      type: String,
+      default: 'Cancel'
+    },
+    onConfirmCallback: Function
   },
 
   data () {
@@ -163,6 +179,10 @@ export default {
 
     .icon {
       vertical-align: middle;
+    }
+
+    .confirmation-buttons{
+      padding-top: 5px;
     }
   }
 }
